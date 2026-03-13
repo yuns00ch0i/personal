@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anne Choi — Technical Sourcer & Recruiter</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7080;
+    --teal-light: #e6f3f5;
+    --teal-mid: #2a9aab;
+    --dark: #111827;
+    --mid: #374151;
+    --light: #6b7280;
+    --divider: #e2e8f0;
+    --bg: #fafaf9;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--mid);
+    font-size: 14.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    max-width: 860px;
+    margin: 48px auto;
+    background: var(--white);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 48px 56px 36px;
+    border-bottom: 1px solid var(--divider);
+    position: relative;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-mid));
+  }
+
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 44px;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .role {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+  }
+
+  .contact span {
+    font-size: 13px;
+    color: var(--light);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact span::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--teal-mid);
+    opacity: 0.6;
+  }
+
+  /* ── BODY ── */
+  .body {
+    padding: 40px 56px 56px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--mid);
+    font-weight: 300;
+    padding: 24px 28px;
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.25s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.35s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+
+  .section-title {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* ── JOB ── */
+  .job { margin-bottom: 28px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .job-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .job-dates {
+    font-size: 12.5px;
+    color: var(--light);
+    font-weight: 300;
+    white-space: nowrap;
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .bullets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .bullets li {
+    font-size: 13.5px;
+    color: var(--mid);
+    font-weight: 300;
+    padding: 3px 0 3px 18px;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--teal-mid);
+    font-size: 10px;
+    top: 5px;
+  }
+
+  /* ── SKILLS ── */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    gap: 6px 16px;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .skill-row:last-child { border-bottom: none; }
+
+  .skill-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .skill-items {
+    font-size: 13.5px;
+    color: var(--mid);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .edu-degree {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .edu-school {
+    font-size: 13px;
+    color: var(--light);
+    font-weight: 300;
+  }
+
+  .edu-note {
+    font-size: 13px;
+    color: var(--light);
+    font-style: italic;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 13px; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; max-width: 100%; }
+    .header, .body { padding: 32px 40px; }
+    .summary, .section { opacity: 1 !important; animation: none !important; }
+    .print-btn { display: none; }
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(10,112,128,0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .print-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(10,112,128,0.45);
+  }
+
+  @media (max-width: 640px) {
+    .page { margin: 0; border-radius: 0; }
+    .header, .body { padding: 32px 24px; }
+    .name { font-size: 34px; }
+    .skill-row { grid-template-columns: 1fr; gap: 2px; }
+    .job-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">Anne Choi</div>
+    <div class="role">Technical Sourcer &amp; Recruiter</div>
+    <div class="contact">
+      <span>(562) 417-6644</span>
+      <span>anne.choi1015@gmail.com</span>
+      <span>linkedin.com/in/anne-choi-1015</span>
+      <span>Irvine, CA</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      Technical sourcer and recruiter with 6+ years building high-quality, diverse pipelines for software engineering, data science, and engineering leadership roles in fast-paced, high-growth environments. An early practitioner of AI-driven recruiting, using tools like Claude and Juicebox.ai daily to source smarter, and applying that same curiosity to side projects like building a notetaking app. Track record at companies like Block/Square delivering 80%+ diverse pipelines, 7% improvements in interview passthrough rates, and 90%+ candidate satisfaction scores. Driven by outcomes, grounded in empathy — looking to bring that same standard of excellence to a team that takes hiring seriously.
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">Founding Recruiter <span style="font-weight:300;color:var(--light)">· Contract</span></div>
+          <div class="job-dates">Feb 2026 – Present</div>
+        </div>
+        <div class="job-company">Eng Hiring LLC &nbsp;·&nbsp; Remote, US</div>
+        <ul class="bullets">
+          <li>Partner with founder and team leads to define hiring requirements, advise on candidate evaluation, and design custom sourcing strategies using Notion for workflow tracking — shortening strategy development time and improving alignment.</li>
+          <li>Leverage AI tools (Juicebox.ai, ChatGPT, Claude) to generate targeted candidate lists for software engineering roles, increasing qualified prospects at top of funnel and reducing initial screening time.</li>
+          <li>Research new AI sourcing platforms, document findings in Slack Canvas, and present data-based recommendations — securing stakeholder buy-in and driving adoption of two tools that streamline workflows.</li>
+          <li>A/B test outreach email sequences using Juicebox.ai and Claude, identify top-performing versions, and roll out across campaigns, achieving higher candidate response rates.</li>
+          <li>Maintain long-term candidate relationships through regular check-ins, keeping warm leads engaged and improving conversion to interviews.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">Talent Sourcer <span style="font-weight:300;color:var(--light)">· Contract</span></div>
+          <div class="job-dates">Aug 2024 – Nov 2024</div>
+        </div>
+        <div class="job-company">Hex Technologies Inc. &nbsp;·&nbsp; Remote, US</div>
+        <ul class="bullets">
+          <li>Partnered with business/technical recruiters and hiring managers, using Gem and LinkedIn Talent Insights to map needs and design a strategic sourcing plan that shortened the sourcing cycle.</li>
+          <li>Drove quality top-of-funnel volume for Software Engineers (AI, Fullstack, Backend, Visualization), Product Designers, Product Expert Lead, and Engineering Leadership roles across the US and Canada.</li>
+          <li>Owned outbound and inbound sourcing, reaching 100+ prospects and conducting 10–20 screening calls per week.</li>
+          <li>Achieved 80% gender-diverse pipeline for a high-impact Product Engineering Lead role.</li>
+          <li>Leveraged talent market research and data to guide hiring team decisions.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">Technical Sourcer</div>
+          <div class="job-dates">Jun 2021 – Jan 2024</div>
+        </div>
+        <div class="job-company">Block Inc. (Square) &nbsp;·&nbsp; Remote, US</div>
+        <ul class="bullets">
+          <li>Owned top-of-funnel sourcing for Software Engineering (frontend, backend, full-stack, mobile), Data Science, ML, and Engineering Management roles across the US, Canada, and Mexico using Gem and LinkedIn Recruiter.</li>
+          <li>Delivered consistently diverse pipelines, targeting 80%+ underrepresented sourced candidates.</li>
+          <li>Led a 20-person project group (Talent partners and engineers) that launched company-wide Frontend hiring initiatives, resulting in a 7% increase in passthrough rates across interview stages within the first year.</li>
+          <li>Developed onboarding program for the technical sourcer team, leading a group of 6 to create multimedia materials inclusive of different learning styles.</li>
+          <li>Analyzed recruitment data via in-house dashboards to strengthen collaboration with full-cycle recruiters, hiring teams, and interviewers — enabling faster scheduling and more data-driven decisions.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">Sr. Recruiting Coordinator</div>
+          <div class="job-dates">Jun 2019 – Jun 2021</div>
+        </div>
+        <div class="job-company">Square Inc. &nbsp;·&nbsp; Oakland, CA</div>
+        <ul class="bullets">
+          <li>Managed end-to-end candidate experience for 500+ candidates per quarter using SmartRecruiter and Google Suite, maintaining a candidate satisfaction score consistently above 90%.</li>
+          <li>Collaborated with Talent partners and hiring teams to enhance the interview experience, keeping team candidate experience scores above 90% MoM.</li>
+          <li>Improved technical interview processes by increasing efficiency and doubling interviewer pool capacity.</li>
+          <li>Created an accommodation resource in partnership with internal and external stakeholders to strengthen Talent's inclusive hiring efforts.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">People Ops Coordinator</div>
+          <div class="job-dates">Aug 2018 – Jun 2019</div>
+        </div>
+        <div class="job-company">Fivestars Loyalty &nbsp;·&nbsp; San Francisco, CA</div>
+        <ul class="bullets">
+          <li>Managed full onboarding and offboarding logistics for 15+ new hires and 10+ departing employees monthly across Payroll, IT, Ops, and Training.</li>
+          <li>Built and ran monthly New Hire Orientation and launched an Employee Recognition Program presented at all-hands meetings.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title">HR Coordinator</div>
+          <div class="job-dates">Oct 2017 – Jun 2018</div>
+        </div>
+        <div class="job-company">Nexon M &nbsp;·&nbsp; Emeryville, CA</div>
+        <ul class="bullets">
+          <li>Coordinated end-to-end candidate scheduling, onboarding, and benefits enrollment for 5+ new hires monthly; modernized personnel records for 80+ employees.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+      <div class="section-title">Skills &amp; Tools</div>
+
+      <div class="skill-row">
+        <div class="skill-label">AI &amp; Sourcing</div>
+        <div class="skill-items">Claude, ChatGPT, Juicebox.ai, Apollo.io, Gem, LinkedIn Recruiter, LinkedIn Talent Insights</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">ATS &amp; Recruiting</div>
+        <div class="skill-items">Greenhouse, SmartRecruiters, JobScore</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Project Mgmt</div>
+        <div class="skill-items">Notion, Coda, Jira, Slack</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Productivity</div>
+        <div class="skill-items">Google Workspace, Microsoft Office Suite, DocuSign, Dropbox</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Languages</div>
+        <div class="skill-items">English (fluent), Korean (fluent)</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Competencies</div>
+        <div class="skill-items">Technical sourcing · AI-driven sourcing · Boolean search · Pipeline development · Diversity &amp; inclusion hiring · Candidate experience · Interview scheduling &amp; coordination · Offer management · Onboarding &amp; offboarding · Stakeholder management · Data-driven recruiting · Talent market mapping · Outreach strategy &amp; A/B testing · Cross-functional collaboration · Nurture programs · Process improvement · Program development · Interviewer training &amp; enablement · Recruitment analytics</div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="edu-row">
+        <div class="edu-degree">B.A. Cognitive Science</div>
+        <div class="edu-school">University of California, Berkeley</div>
+      </div>
+      <div class="edu-note">Grounding in human cognition, behavioral decision-making, and communication — directly applicable to candidate assessment and stakeholder influence.</div>
+    </div>
+
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+
+</body>
+</html>
